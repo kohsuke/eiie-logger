@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+<html>
+  <head>
+    <title>ExceptionInInitializerError logger - </title>
+    <style type="text/css" media="all">
+      @import url("./css/maven-base.css");
+      @import url("./css/maven-theme.css");
+      @import url("./css/1024px.css");
+      @import url("./css/site.css");
+    </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      </head>
+  <body>
+    <div id="wrap2"><div id="wrap">
+    <div id="header">
+      <p id="toplinks">Skip to: <a href="#content">Content</a> | <a href="#sidebar">Navigation</a> | <a href="#footer">Footer</a></p>
+		
+            <h1 id="bannerLeft">
+          <a href="./">
+    
+            ExceptionInInitializerError logger
+    
+            </a>
+        </h1>
+                
+      <p id="slogan">ExceptionInInitializerError logger</p>
+    </div>
+    <div id="breadcrumbs">
+      <div class="xright">  </div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div id="navcolumn">
+              <h2>
+          ExceptionInInitializerError logger
+        </h2><ul>
+              
+    <li class="none">
+              <strong>Introduction</strong>
+        </li>
+              
+    <li class="none">
+              <a href="http://search.maven.org/remotecontent?filepath=org/kohsuke/eiie-logger/1.9-SNAPSHOT/file-leak-detector-1.9-SNAPSHOT-jar-with-dependencies.jar">Download</a>
+        </li>
+              
+    <li class="none">
+              <a href="apidocs/">Javadoc</a>
+        </li>
+          </ul>
+      <h2>
+          Project Info
+        </h2><ul>
+              
+    <li class="none">
+              <a href="https://github.com/kohsuke/eiie-logger/issues">Issue tracker</a>
+        </li>
+              
+    <li class="none">
+              <a href="https://github.com/kohsuke/eiie-logger">Source code</a>
+        </li>
+          </ul>
+        </div>
+    </div>
+    <div id="content">
+      <div id="contentBox">
+        <div class="section">
+<h2>What is this?<a name="What_is_this"></a></h2>
+<p>This little Java agent lets you log whenever `ExceptionInInitializerError` is instantiated. I wrote this because this exception doesn't get chained to later `NoClassDefFoundError`, and as such it is very easy to lose track of why the class failed to load in the first place.</p>
+<p>See [the bug report against JDK for this](https://bugs.openjdk.java.net/browse/JDK-8051847) for further justification, which has been ignored for more than 3 years.</p>
+<p>With this agent, any `ExceptionInInitializerError` gets logged through `java.util.logging` logger of the name `org.kohsuke.eiie_logger` at the warning level. In this way, you only need to look at one place to find all the `ExceptionInInitializerError` problems in your JVM.</p></div>
+<div class="section">
+<h2>Usage<a name="Usage"></a></h2>
+<p>Use it as a Java agent to activate this from the beginning of the program. This is recommended so as not to miss any `ExceptionInInitializerError`</p>
+<div>
+<pre>$ java -javaagent:path/to/eiie-logger.jar ...your usual Java args follows...</pre></div></div>
+<div class="section">
+<h2>Attaching after VM startup<a name="Attaching_after_VM_startup"></a></h2>
+<p>When run as a regular jar file, this tool can be used to attach the logger into other JVMs on the same system. You specify the JVM by its PID. The following example attaches the tool to the pid 1500.</p>
+<div>
+<pre>$ java -jar path/to/eiie-logger.jar 1500</pre></div></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="xright">&#169;  
+          2015
+    
+          <a href="http://kohsuke.org/">Kohsuke Kawaguchi</a> and other contributors
+          
+  
+
+  
+  
+  &nbsp;| Last Published: 2015-01-28
+  &nbsp;| Version: 1.9-SNAPSHOT
+</div>
+      <div class="clear">
+        <hr/>
+      </div>
+    </div>
+    </div></div>
+  </body>
+</html>
