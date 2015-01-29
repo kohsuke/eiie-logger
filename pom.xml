@@ -6,7 +6,7 @@
     <version>10</version>
   </parent>
   <artifactId>eiie-logger</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1</version>
   <name>ExceptionInInitializerError logger</name>
 
   <url>http://${project.artifactId}.kohsuke.org/</url>
