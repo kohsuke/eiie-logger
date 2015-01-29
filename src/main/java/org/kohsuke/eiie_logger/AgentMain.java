@@ -28,15 +28,6 @@ public class AgentMain {
         instrumentation.retransformClasses(ExceptionInInitializerError.class);
     }
 
-    /**
-     * Intercepted instantiation comes here.
-     */
-    public static void log(Throwable e) {
-        LOGGER.log(Level.WARNING, "ExceptionInInitializerError instantiated", e);
-    }
-
-    public static Logger LOGGER = Logger.getLogger(AgentMain.class.getName());
-
     static List<ClassTransformSpec> createSpec() {
         return Arrays.asList(
             new ClassTransformSpec("java/lang/ExceptionInInitializerError",
@@ -56,8 +47,8 @@ public class AgentMain {
         }
 
         protected void append(CodeGenerator g) {
-            g.invokeAppStatic(AgentMain.class,"log",
-                    new Class[]{Throwable.class},
+            g.invokeAppStatic(EiieLog.class,"log",
+                    new Class[]{ExceptionInInitializerError.class},
                     new int[]{0});
         }
     }
